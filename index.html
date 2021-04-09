@@ -24,44 +24,75 @@
             <th type="text" id="test2">コメント</th>
             <th type="text" id="test3">状態</th>
           </tr>
-          
-        </thead>
+           </thead >
+          <tbody  id="new-task">
+            <tr>
+              <td></td>
+            </tr>
+           </tbody> 
       </table>
       
       <h2>新規タスクの増加</h2>
       ​​
       <p>
-        <input type="text"  id="input">
-        <button type="button" id="output">追加</button>
+        <input type="text"  id="input" value="">
+        <button type="button" id="output" value="">追加</button>
       </p>
     </div>
     
     <script>
-      const num = 0;
-      const output = document.getElementById("output");
-
-      output.addEventListener('click',()=>{
-        const list = document.createElement("th");
-        list.textContent = num;
-        const input = document.getElementById("input");
-        const input2 = document.createElement("th");
-        input2.textContent = (input);
-
-
-        const btn1 = document.createElement("BUTTON");
-        btn1.textContent ="作業中"
-
-        const btn2 = document.createElement("BUTTON");
-        btn2.textContent ="削除";
+      let num = 0;
       
-        const th = document.createElement("th");
-        th.appendChild(input2);
-        th.appendChild(btn1)
-        th.appendChild(btn2)
-   
       
-      })
- </script>
+      const todos = []
+      const todo = {
+         id:num,
+         comment: '',
+         status: '作業中'
+          }
+
+const output = document.getElementById("output");
+
+//関数addTask
+const addTask = () => {
+  const input = document.getElementById('input').value;
+  todo.comment = input
+  todo.num = input
+  todos.push(todo)
+  displayTodos(todo)
+  num++
+}
+
+//関数displayTodos
+const displayTodos = (todo) => {
+  const list = document.createElement("td");
+  list.textContent = num;
+  const input2 = document.createElement("td");
+  input2.textContent = todo.input
+  const btn1 = document.createElement("button");
+  btn1.textContent = todo.status
+  const btn2 = document.createElement("button")
+  btn2.textContent ='削除'      
+  const th = document.createElement('td');
+  th.textContent = todo.comment
+  input.value ='';
+
+  
+  
+  const tBody = document.getElementById('new-task')
+  const tBody2 = document.createElement('tr');
+  tBody.appendChild(tBody2);
+  tBody.appendChild(list)
+  tBody.appendChild(th)
+  tBody.appendChild(input2);
+  tBody.appendChild(btn1)
+  tBody.appendChild(btn2)
+  };
+
+output.addEventListener('click', addTask,)
+
+</script>
   </body>
-</html>
+  </html>
+
 
